@@ -134,7 +134,6 @@ def main():
         parser.add_argument('-d', type=str, help='Decode the file quoted after the d.')
         parser.add_argument('-DEBUG', action='store_true', help='Add Debug messages to log.')
         args = parser.parse_args()
-        print(args.dir)
         if getattr(args,'e') is not None:
             decoded_json = os.path.join(args.dir, args.e)
             logging.info("Running with -e to encode a JSON file.")
@@ -151,6 +150,5 @@ def main():
         sys.exit()
 if __name__== '__main__':
         file_location = os.path.dirname(os.path.realpath(__file__))
-        print(file_location)
         main()
 
