@@ -27,26 +27,26 @@ def base64_encode(attachment):
 
 class Article:
     def __init__(self,provider,item_id,country_iso,language_iso,source_id,source_name,publish_timestamp,article_lead,article_text):
-        self.provider= provider
-        self.item_id=item_id
-        self.country=country_iso
-        self.language=language_iso
-        self.source_id=source_id
-        self.source_name=source_name
-        self.publish_timestamp=publish_timestamp
-        self.article_lead=article_lead
-        self.article_text=article_text
-        self.additional_content=[]
+        self.provider = provider
+        self.item_id = item_id
+        self.country = country_iso
+        self.language = language_iso
+        self.source_id = source_id
+        self.source_name = source_name
+        self.publish_timestamp = publish_timestamp
+        self.article_lead = article_lead
+        self.article_text = article_text
+        self.additional_content = []
 
     def additional_content_decode(self,additional_content):
-        b64= additional_content["Base64data"]
+        b64 = additional_content["Base64data"]
         content=base64_decode(b64)
         return content
     def additional_content_encode(self,file_location, file_name):
         attachment = load_attachment(file_location,file_name)
         encoded_b64 = base64_encode(attachment)
-        self.additional_content["FileName"]=file_name
-        self.additional_content["Base64data"]=encoded_b64
+        self.additional_content["FileName"] = file_name
+        self.additional_content["Base64data"] = encoded_b64
 
         
         
@@ -58,25 +58,38 @@ class Article:
 
 
 
-def fibep_decode():
+def fibep_decode(encoded_json):
     try:
-        pass
-        
-        
+
+        json.loads(encoded_json)
+        news = Article(encoded_json["Provider"],
+                       encoded_json["ItemID"],
+                       encoded_json["Country"],
+                       encoded_json["Language"],
+                       encoded_json["SourceID"],
+                       encoded_json["SourceName"],
+                       encoded_json["PublishTime"],
+                       encoded_json["Headline"],
+                       encoded_json["Lead"],
+                       encoded_json["Text"],
+                       encoded_json["SourceChannel"],
+                       encoded_json["ContentURL"])
+
     except Exception as exception:
-        logging.critical(f"There's an error accessing your config.yml file, the error is the following: {exception}")
-        print("There's no config yaml file in the program's folder, please check the logs.")
+        logging.critical(f"There's an error accessing your json file, the error is the following: {exception}")
+        print("There's no json file in the program's folder, please check the logs.")
         sys.exit()
 
 
 def fibep_encode(news):
     try:
-        pass
+
+        json.dumps(news)
 
 
     except Exception as exception:
-        logging.critical(f"There's an error accessing your config.yml file, the error is the following: {exception}")
-        print("There's no config yaml file in the program's folder, please check the logs.")
+        logging.critical(f"There's an error accessing your JSON file, the error is the following: {exception}")
+        print("There's no JSON file in the program's folder, please check the logs.")
         sys.exit()
 
 
