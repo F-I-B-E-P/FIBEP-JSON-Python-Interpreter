@@ -11,6 +11,6 @@ additional_content_list, content_url, contract_id, customer_id, profile_id, arti
 additional_content_list and matching_words_list are both list of dictionaries that can contain many dictionaries.In the case of additional_content_list, if it has base64 encoded elements,
 the library automatically decodes them  and regenerates the original file per the standard.
 
-You can try the programa directly in your cli using the following syntax:
+You can try the program directly in your cli using the following syntax:
 fibep_interpreter DIR -d FILETODECODE
 where DIR is the directory in wich the file is in (defaults to the directory in which the program is installed).
