@@ -1,0 +1,10 @@
+LICENSE
+README.md
+pyproject.toml
+src/__init__.py
+src/fibep_interpreter.py
+src/fibep_validator.py
+src/fibepjson.egg-info/PKG-INFO
+src/fibepjson.egg-info/SOURCES.txt
+src/fibepjson.egg-info/dependency_links.txt
+src/fibepjson.egg-info/top_level.txt
